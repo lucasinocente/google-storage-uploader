@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <header>
+    <% include ../partials/header %>
+  </header>
+  <main>
+    <section class="hero">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              /<%= bucket %>
+            </h1>
+            <h2>Lista de arquivos:</h2>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <div class="columns is-mobile is-multiline">
+          <% files.forEach(function(file){ %>
+            <div class="column is-half-mobile is-one-quarter-tablet is-one-quarter-desktop">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image">
+                    <img src="https://<%= bucket %>.storage.googleapis.com/<%= file.name %>">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <textarea class="textarea">https://<%= bucket %>.storage.googleapis.com/<%= file.name %></textarea>
+                      <br>
+                      <button data-clipboard-text="https://<%= bucket %>.storage.googleapis.com/<%= file.name %>" class="btn-copy button is-fullwidth" onclick="displayNotification()">Copiar url</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+  </main>
+  <% include ../partials/footer %>
+</body>
+</html>

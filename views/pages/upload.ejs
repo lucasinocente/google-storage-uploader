@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+  <header>
+    <% include ../partials/header %>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Upload de arquivos
+          </h1>
+        </div>
+      </div>
+    </section>
+    <div class="card">
+    <div class="card-content">
+      <form action="/uploadfiles" class="dropzone">
+        <label class="label">Bucket:</label>
+        <select id="bucketName" name="bucketName" class="select">
+          <% buckets.forEach(function(bucket){ %>
+            <option value="<%= bucket.name %>"><%= bucket.name %></option>
+          <% }); %>
+        </select>
+        <hr>
+        <label class="label">Arquivos:</label>
+      </form>
+      <!-- <form action="/uploadfiles" enctype="multipart/form-data" method="POST">
+        <select id="volume">
+          <% buckets.forEach(function(bucket){ %>
+            <option value="<%= bucket.name %>"><%= bucket.name %></option>
+          <% }); %>
+        </select>
+        Select images: <input type="file" name="medias" multiple>
+        <input type="submit" value="Upload"/>
+      </form> -->
+    </div>
+
+  </main>
+  <% include ../partials/footer %>
+</body>
+</html>
